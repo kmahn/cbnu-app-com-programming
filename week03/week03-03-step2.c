@@ -11,6 +11,8 @@ int main() {
 	for (number = 1; number <= 1000; number++) {
 		// 구현전 임시 출력
 		// printf("%d가 완전수인지 체크해봅시다.\n", number);
+
+		// number가 완전수라면 number 출력
 		if (is_perfect_number(number)) {
 			printf(" %d \n", number);
 		}
