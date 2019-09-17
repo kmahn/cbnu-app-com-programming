@@ -4,26 +4,30 @@
 
 // 함수 선언부
 void get_data();
-float calc_average();
-float calc_stdev(float mean);
+void calc_avgstd();
 
 // 전역 변수 선언
 float num[NUMMAX];
 int n;
 
+double avg, stdev;
+
 int main()
 {
 	// 지역 변수 선언
-	float avg, stdev;
+	// float avg, stdev;
 
 	// 데이터 입력
 	get_data();
 
 	// 평균 구하기
-	avg = calc_average();
+	// avg = calc_average();
 
 	// 표준편차 구하기
-	stdev = calc_stdev(avg);
+	// stdev = calc_stdev(avg);
+
+	// 전역변수를 이용하여 평균과 표준편차 구하기
+	calc_avgstd();
 
 	printf("\n평균 = %6.2f\n", avg);
 	printf("표준편차 = %6.2f\n\n", stdev);
@@ -50,40 +54,16 @@ void get_data() {
 	}
 }
 
-// 평균 구하는 함수
-float calc_average() {
-	// 필요한 지역 변수 선언
-	float sum, avg;
+
+void calc_avgstd() {
+	double sum = 0, ssum = 0, variance;
 	int k;
-
-	// sum을 덧셈의 항등원으로 초기화
-	sum = 0.0;
-
-	// k = 0 ~ n 까지 num[k]까지의 합 구하기
-	for (k = 0; k < n; k++)
-		sum += num[k];
-
-	// 평균 구하기
-	avg = sum / n;
-
-	return avg;
-}
-
-// 표준편차 구하는 함수
-float calc_stdev(float mean)
-{
-	// 필요한 지역 변수 선언
-	float sum, diff, variance, stdev;
-	int k;
-
-	// 분산 및 표준편차 구하기
-	sum = 0.0;
 	for (k = 0; k < n; k++) {
-		diff = num[k] - mean;
-		sum += diff * diff;
+		sum += num[k];
+		ssum += num[k] * num[k];
 	}
-	variance = sum / n;
-	stdev = (float)sqrt(variance);
 
-	return stdev;
+	avg = sum / n;
+	variance = ssum / n - avg * avg;
+	stdev = sqrt(variance);
 }
