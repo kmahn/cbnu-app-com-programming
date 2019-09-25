@@ -40,7 +40,7 @@ int is_prime(int n) {
 	int divider = 2, to = (int)sqrt(n);
 
 	// 2 ~ n의 제곱근까지 반복을 하면서 나머지가 0인 것이 하나라도 있으면 소수가 아님
-	while (divider < n) {
+	while (divider <= to) {
 		if (n % divider == 0) return 0;
 		divider++;
 	}
