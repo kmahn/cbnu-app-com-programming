@@ -1,3 +1,6 @@
+/*
+  5 주차 예제: 자연대수
+*/
 #include <stdio.h>
 #include <math.h>
 
