@@ -7,7 +7,7 @@
 #define MAX 1000
 
 void generate_random(int[], int);
-void print_array(const char *, int[], int);
+void print_array(const char *, const int[], int);
 
 int main() {
 	// 지역 변수 선언
@@ -45,7 +45,7 @@ void generate_random(int arr[], int size) {
 	for (n = 0; n < size; n++) arr[n] = rand() % MAX + 1;
 }
 
-void print_array(const char *str, int arr[], int size) {
+void print_array(const char *str, const int arr[], int size) {
 	int n;
 
 	printf("%s %d\n", str, size);

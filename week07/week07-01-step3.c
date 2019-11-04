@@ -11,10 +11,10 @@
 void generate_random(int[]);
 
 // 배열 출력
-void print_array(const char *, int[]);
+void print_array(const char *, const int[]);
 
 // 선택 정렬을 위한 도구 함수
-int find_min(int[], int);
+int find_min(const int[], int);
 void swap(int *, int *);
 // 선택 정렬
 void selection_sort(int[]);
@@ -53,7 +53,7 @@ void generate_random(int arr[]) {
 	}
 }
 
-void print_array(const char *str, int arr[]) {
+void print_array(const char *str, const int arr[]) {
 	// 배열 arr 출력
 	int n;
 	printf(str); // 배열의 제목 출력
@@ -65,7 +65,7 @@ void print_array(const char *str, int arr[]) {
 	printf("\n");
 }
 
-int find_min(int arr[], int start) {
+int find_min(const int arr[], int start) {
 	// 배열의 start 인덱스에서부터 시작하여 가장 최소값이 있는 곳의 인덱스를 리턴
 	int n, minindex = start;
 	for (n = start + 1; n < SIZE; n++) {

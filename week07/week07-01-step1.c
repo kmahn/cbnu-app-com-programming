@@ -8,7 +8,7 @@
 void generate_random(int[]);
 
 // 배열 출력
-void print_array(const char *, int[]);
+void print_array(const char *, const int[]);
 
 // 선택 정렬
 void selection_sort(int[]);
@@ -38,7 +38,7 @@ void generate_random(int arr[]) {
 	// 난수를 생성하여 배열 arr에 값 할당
 }
 
-void print_array(const char *str, int arr[]) {
+void print_array(const char *str, const int arr[]) {
 	// 배열 arr 출력
 }
 

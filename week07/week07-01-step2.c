@@ -11,7 +11,7 @@
 void generate_random(int[]);
 
 // 배열 출력
-void print_array(const char *, int[]);
+void print_array(const char *, const int[]);
 
 // 선택 정렬
 void selection_sort(int[]);
@@ -50,7 +50,7 @@ void generate_random(int arr[]) {
 	}
 }
 
-void print_array(const char *str, int arr[]) {
+void print_array(const char *str, const int arr[]) {
 	// 배열 arr 출력
 	int n;
 	printf(str); // 배열의 제목 출력

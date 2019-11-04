@@ -1,5 +1,5 @@
 /*
-7주차 예제: 버블정렬 - 프로그램 구현
+8주차 예제: 버블정렬 - print_array() 함수 수정
 */
 #include <stdio.h>
 #include <stdlib.h>
@@ -7,7 +7,7 @@
 #define MAX 1000
 
 void generate_random(int[], int);
-void print_array(const char *, const int[], int);
+void print_array(FILE * const, const char *, const int[], int);
 
 // 버블정렬 관련 함수
 void bubble_sort(int[], int);
@@ -29,11 +29,11 @@ int main() {
 	data = (int *)malloc(sizeof(int) * size);
 
 	generate_random(data, size);
-	print_array("원본: ", data, size);
+	print_array(stdout, "원본: ", data, size);
 
 	// 버블 정렬 적용
 	bubble_sort(data, size);
-	print_array("정렬: ", data, size);
+	print_array(stdout, "정렬: ", data, size);
 
 	// 파일에 저장: 구현을 미룸(8장에서 구현)
 
@@ -51,18 +51,24 @@ void generate_random(int arr[], int size) {
 	for (n = 0; n < size; n++) arr[n] = rand() % MAX + 1;
 }
 
-void print_array(const char *str, const int arr[], int size) {
+void print_array(FILE * const fp, const char *str, const int arr[], int size) {
 	int n;
 
-	printf("%s %d\n", str, size);
+	// printf("%s %d\n", str, size);
+	fprintf(fp, "%s %d\n", str, size);
+
 
 	for (n = 0; n < size; n++) {
-		printf("%5d", arr[n]);
+		// printf("%5d", arr[n]);
+		fprintf(fp, "%5d", arr[n]);
 
 		// 한줄에 10 개씩 출력
-		if ((n + 1) % 10 == 0) printf("\n");
+		//if ((n + 1) % 10 == 0) printf("\n");
+		if ((n + 1) % 10 == 0) fprintf(fp, "\n");
+
 	}
-	printf("\n");
+	// printf("\n");
+	fprintf(fp, "\n");
 }
 
 void bubble_sort(int arr[], int size) {
