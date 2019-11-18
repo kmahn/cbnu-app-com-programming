@@ -9,6 +9,8 @@
 // 함수 원형 선언
 void initialize();
 void read_file();
+void move_downward(int);
+void insert_data(int, const char *);
 void print_words();
 void deallocate();
 void convert_lower(char *);
@@ -43,17 +45,34 @@ void initialize() {
 
 void read_file() {
 	char buffer[256], *token;
+	int found, index;
 	FILE *fp = fopen("programming.txt", "r");
 	while (fgets(buffer, 255, fp)) {
-		// printf("%s", buffer);
 		token = strtok(buffer, DELEMETERS);
 		while (token) {
 			convert_lower(token);
-			printf("%s\n", token);
+			index = linear_search(token, &found);
+
+			if (found) {
+				// 단어가 이미 있다면 해당 단어의 카운트를 증가
+				words[index].count++;
+			}
+			else {
+				move_downward(index); // 단어를 한칸씩 뒤로 옮기고
+				insert_data(index, token); // 단어를 해당 위치에 추가.
+			}
 			token = strtok(NULL, DELEMETERS);
 		}
 	}
 	fclose(fp);
+}
+
+void move_downward(int index) {
+	// 구현 미루기: index부터 그 이후의 단어들을 뒤로 한 칸씩 옮김
+}
+
+void insert_data(int index, const char *word) {
+	// 구현 미루기: index에 해당하는 위치에 word 추가
 }
 
 void convert_lower(char *str) {
